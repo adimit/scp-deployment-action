@@ -1,0 +1,6 @@
+name: 'Deploy by rsync/ssh'
+description: 'Deploy work by rsync and ssh'
+icon: 'truck'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
