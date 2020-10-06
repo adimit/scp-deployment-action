@@ -1,6 +1,28 @@
 name: 'Deploy by rsync/ssh'
 description: 'Deploy work by rsync and ssh'
 icon: 'truck'
+inputs:
+  ssh-host:
+    description: The host to deploy to
+    required: true
+  ssh-user:
+    description: The user with which to log in to the host
+    required: true
+  remote-path:
+    description: The remote path to deploy to (user must have write permissions)
+    required: true
+  ssh-elliptic-key:
+    description: The ssh ed25519 SECRET key to deploy with (user must have public key in authorized_keys)
+    required: true
+  ssh-host-entry:
+    description: The entry in the ssh known_hosts file for the target host
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.ssh-host }}
+    - ${{ inputs.ssh-user }}
+    - ${{ inputs.remote-path }}
+    - ${{ inputs.ssh-elliptic-key }}
+    - ${{ inputs.ssh-host-entry }}
