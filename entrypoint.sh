@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# Set up SSH secrets
-test -n $ELLIPTIC_KEY || (echo "Need elliptic key" && exit 1)
-test -n $HOST_KEY || (echo "Need host key" && exit 1)
-
 SSH_PATH=$HOME/.ssh
 mkdir -p $SSH_PATH
 echo "$ELLIPTIC_KEY" > $SSH_PATH/id_ed25519
@@ -19,3 +15,4 @@ cat $SSH_PATH/*
 echo $*
 echo $@
 
+echo rsync -rvult $GITHUB_WORKTREE $SSH_USER@$SSH_HOST:$HOST_PATH
