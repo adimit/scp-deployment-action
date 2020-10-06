@@ -12,13 +12,6 @@ echo "$ELLIPTIC_KEY" > $SSH_PATH/id_ed25519
 echo "$HOST_ENTRY" > $SSH_PATH/known_hosts
 chmod 400 $SSH_PATH/*
 
-env
+ls -R
 
-ls -R $GITHUB_WORKTREE
-
-cat $SSH_PATH/*
-
-echo $*
-echo $@
-
-echo rsync -rvult $GITHUB_WORKTREE $SSH_USER@$SSH_HOST:$HOST_PATH
+rsync -rvult . $SSH_USER@$SSH_HOST:$HOST_PATH
