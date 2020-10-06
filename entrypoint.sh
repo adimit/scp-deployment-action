@@ -12,6 +12,6 @@ echo "$ELLIPTIC_KEY" > $SSH_PATH/id_ed25519
 echo "$HOST_ENTRY" > $SSH_PATH/known_hosts
 chmod 600 $SSH_PATH/*
 
-wc $SSH_PATH/*
+md5sum $SSH_PATH/known_hosts
 
 rsync -rvult . $SSH_USER@$SSH_HOST:$HOST_PATH
