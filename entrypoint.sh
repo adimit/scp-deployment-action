@@ -9,9 +9,7 @@ HOST_ENTRY=$5
 SSH_PATH=$HOME/.ssh
 mkdir -p $SSH_PATH
 echo "$ELLIPTIC_KEY" > $SSH_PATH/id_ed25519
-# echo "$HOST_ENTRY" > $SSH_PATH/known_hosts
+echo "$HOST_ENTRY" > /etc/ssh/ssh_known_hosts
 chmod 600 $SSH_PATH/*
-
-ssh-keyscan pryslopska.com > $SSH_PATH/known_hosts
 
 rsync -rvult . $SSH_USER@$SSH_HOST:$HOST_PATH
