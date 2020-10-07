@@ -6,7 +6,7 @@ HOST_PATH=$3
 ELLIPTIC_KEY=$4
 HOST_ENTRY=$5
 
-SSH_PATH=$HOME/.ssh
+SSH_PATH=/home/github/.ssh
 mkdir -p $SSH_PATH
 echo "$ELLIPTIC_KEY" > $SSH_PATH/id_ed25519
 echo "$HOST_ENTRY" > /etc/ssh/ssh_known_hosts
