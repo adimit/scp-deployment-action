@@ -17,6 +17,9 @@ inputs:
   ssh-host-entry:
     description: The entry in the ssh known_hosts file for the target host
     required: true
+  ssh-port:
+    description: The remote server's SSH port (22 if not specified)
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -26,3 +29,4 @@ runs:
     - ${{ inputs.remote-path }}
     - ${{ inputs.ssh-elliptic-key }}
     - ${{ inputs.ssh-host-entry }}
+    - ${{ inputs.ssh-port }}
