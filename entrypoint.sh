@@ -14,4 +14,6 @@ echo "$ELLIPTIC_KEY" > $SSH_PATH/id_ed25519
 echo "$HOST_ENTRY" > $SSH_PATH/known_hosts
 chmod 600 $SSH_PATH/*
 
+ls -R /github/workspace
+
 rsync -rulti -e "ssh -p $SSH_PORT" --exclude .git --delete-after "/github/workspace/$LOCAL_PATH" "$SSH_USER"@"$SSH_HOST":"$HOST_PATH"
