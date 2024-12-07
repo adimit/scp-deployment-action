@@ -9,7 +9,7 @@ inputs:
     description: The user with which to log in to the host
     required: true
   local-path:
-    description: The path in the repository that should be copied. Default: '.'
+    description: "The path in the repository that should be copied (Git repo root dir if not specified)"
     required: false
   remote-path:
     description: The remote path to deploy to (user must have write permissions)
