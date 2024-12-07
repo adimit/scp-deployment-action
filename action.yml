@@ -1,6 +1,6 @@
-name: 'Deploy by rsync/ssh'
-description: 'Deploy work by rsync and ssh'
-icon: 'truck'
+name: "Deploy by rsync/ssh"
+description: "Deploy work by rsync and ssh"
+icon: "truck"
 inputs:
   ssh-host:
     description: The host to deploy to
@@ -8,6 +8,9 @@ inputs:
   ssh-user:
     description: The user with which to log in to the host
     required: true
+  local-path:
+    description: The path in the repository that should be copied. Default: '.'
+    required: false
   remote-path:
     description: The remote path to deploy to (user must have write permissions)
     required: true
@@ -21,8 +24,8 @@ inputs:
     description: The remote server's SSH port (22 if not specified)
     required: false
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
   args:
     - ${{ inputs.ssh-host }}
     - ${{ inputs.ssh-user }}
@@ -30,3 +33,4 @@ runs:
     - ${{ inputs.ssh-elliptic-key }}
     - ${{ inputs.ssh-host-entry }}
     - ${{ inputs.ssh-port }}
+    - ${{ inputs.local-path }}
